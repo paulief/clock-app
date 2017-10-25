@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const getTimeValues = () => {
+export const getTimeValues = () => {
   const now = moment();
   return {
     hours: now.hours(),

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { TIME_ACTIONS, timeOffsetAction } from '../actions/timeActions';
+import PropTypes from 'prop-types';
+import { incrementAction, decrementAction } from '../actions/timeActions';
 import { TIME_UNITS } from '../constants';
 import TimeUnit from '../components/TimeUnit';
 
@@ -23,4 +24,15 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, null)(TimeUnit);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  increment: () => dispatch(incrementAction(ownProps.unitType)),
+  decrement: () => dispatch(decrementAction(ownProps.unitType)),
+});
+
+const TimeUnitContainer = connect(mapStateToProps, mapDispatchToProps)(TimeUnit);
+
+TimeUnitContainer.propTypes = {
+  unitType: PropTypes.oneOf(Object.values(TIME_UNITS)).isRequired,
+};
+
+export default TimeUnitContainer;

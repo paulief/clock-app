@@ -23,8 +23,13 @@ export const TIME_ACTIONS = {
 };
 
 // Action Creators
+export const incrementAction = unitType => ({
+  type: `INCREMENT_${unitType}`,
+});
 
-export const timeOffsetAction = type => ({ type });
+export const decrementAction = unitType => ({
+  type: `DECREMENT_${unitType}`,
+});
 
 const updateTime = timeValues => ({
   type: UPDATE_TIME,

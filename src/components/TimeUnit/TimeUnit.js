@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TIME_UNITS } from '../../constants';
 
-const TimeUnit = ({ unitType, unitValue }) => (
+const TimeUnit = ({ unitValue, increment, decrement }) => (
   <div>
-    { `${unitType}: ${unitValue}` }
+    <button onClick={increment}>Increment</button>
+    { `${unitValue}` }
+    <button onClick={decrement}>Decrement</button>
   </div>
 );
 
 TimeUnit.propTypes = {
-  unitType: PropTypes.oneOf(Object.values(TIME_UNITS)).isRequired,
   unitValue: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
 };
 
 export default TimeUnit;
