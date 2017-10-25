@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
   const unitValue = getUnitValue(state.time, ownProps.unitType);
   return {
     unitValue,
-  }
+  };
 };
 
 export default connect(mapStateToProps, null)(TimeUnit);

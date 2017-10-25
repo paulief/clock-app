@@ -1,5 +1,5 @@
 import { TIME_ACTIONS } from '../actions/timeActions';
-import { getTimeValues } from '../helpers/timeHelper';
+import getTimeValues from '../helpers/timeHelper';
 
 const timeValues = getTimeValues();
 const initialState = {
@@ -49,6 +49,6 @@ const timeReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default timeReducer;

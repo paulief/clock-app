@@ -19,11 +19,7 @@ export const TIME_ACTIONS = {
 
 // Action Creators
 
-export const timeAction = (type) => {
-  return {
-    type,
-  }
-}
+export const timeAction = type => ({ type });
 
 // NOTE: Possible second approach
 
@@ -31,9 +27,7 @@ export const timeAction = (type) => {
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 
-export const incrementUnit = (unit) => {
-  return {
-    type: INCREMENT,
-    unit,
-  }
-}
+export const incrementUnit = unit => ({
+  type: INCREMENT,
+  unit,
+});

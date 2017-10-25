@@ -4,7 +4,7 @@ import { TIME_UNITS } from '../constants';
 
 const TimeUnit = ({ unitType, unitValue }) => (
   <div>
-    { unitType + ': ' + unitValue }
+    { `${unitType}: ${unitValue}` }
   </div>
 );
 

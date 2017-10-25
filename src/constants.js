@@ -4,3 +4,5 @@ export const TIME_UNITS = {
   MINUTES: 'MINUTES',
   SECONDS: 'SECONDS',
 };
+
+export const API_PATH = 'http://localhost:3000';

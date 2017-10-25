@@ -4,5 +4,5 @@ import rootReducer from '../reducers';
 
 const enhancer = applyMiddleware(thunk);
 
-const store = (initialState) => createStore(rootReducer, initialState, enhancer);
+const store = initialState => createStore(rootReducer, initialState, enhancer);
 export default store;
