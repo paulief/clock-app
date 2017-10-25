@@ -1,5 +1,5 @@
 import { TIME_ACTIONS } from '../actions/timeActions';
-import getTimeValues from '../helpers/timeHelper';
+import { getTimeValues } from '../helpers/timeHelper';
 
 const timeValues = getTimeValues();
 const initialState = {
@@ -13,6 +13,12 @@ const timeReducer = (state = initialState, action) => {
   const { hourOffset, minuteOffset, secondOffset } = state;
 
   switch (action.type) {
+    case TIME_ACTIONS.UPDATE_TIME:
+      return {
+        ...state,
+        ...action.timeValues,
+      };
+
     case TIME_ACTIONS.INCREMENT_HOURS:
       return {
         ...state,

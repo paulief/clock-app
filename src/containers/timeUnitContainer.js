@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { TIME_ACTIONS, timeAction } from '../actions/timeActions';
+import { TIME_ACTIONS, timeOffsetAction } from '../actions/timeActions';
 import { TIME_UNITS } from '../constants';
-import TimeUnit from '../components/timeUnit';
+import TimeUnit from '../components/TimeUnit';
 
 const getUnitValue = (timeValues, unitType) => {
   switch (unitType) {

@@ -1,4 +1,8 @@
+import { getTimeValues } from '../helpers/timeHelper';
+
 // Action Types
+
+const UPDATE_TIME = 'UPDATE_TIME';
 
 const INCREMENT_SECONDS = 'INCREMENT_SECONDS';
 const INCREMENT_MINUTES = 'INCREMENT_MINUTES';
@@ -15,11 +19,24 @@ export const TIME_ACTIONS = {
   DECREMENT_SECONDS,
   DECREMENT_MINUTES,
   DECREMENT_HOURS,
+  UPDATE_TIME,
 };
 
 // Action Creators
 
-export const timeAction = type => ({ type });
+export const timeOffsetAction = type => ({ type });
+
+const updateTime = timeValues => ({
+  type: UPDATE_TIME,
+  timeValues,
+});
+
+export const startClock = () => (dispatch) => {
+  setInterval(() => {
+    const timeValues = getTimeValues();
+    dispatch(updateTime(timeValues));
+  }, 1000);
+};
 
 // NOTE: Possible second approach
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TIME_UNITS } from '../constants';
+import { TIME_UNITS } from '../../constants';
 
 const TimeUnit = ({ unitType, unitValue }) => (
   <div>
