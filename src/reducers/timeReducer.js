@@ -1,6 +1,9 @@
 import { TIME_ACTIONS } from '../actions/timeActions';
+import { getTimeValues } from '../helpers/timeHelper';
 
+const timeValues = getTimeValues();
 const initialState = {
+  ...timeValues,
   hourOffset: 0,
   minuteOffset: 0,
   secondOffset: 0,

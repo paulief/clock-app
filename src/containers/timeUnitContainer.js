@@ -3,14 +3,14 @@ import { TIME_ACTIONS, timeAction } from '../actions/timeActions';
 import { TIME_UNITS } from '../constants';
 import TimeUnit from '../components/timeUnit';
 
-const getUnitValue = (timeOffsets, unitType) => {
+const getUnitValue = (timeValues, unitType) => {
   switch (unitType) {
     case TIME_UNITS.HOURS:
-      return timeOffsets.hourOffset;
+      return timeValues.hours + timeValues.hourOffset;
     case TIME_UNITS.MINUTES:
-      return timeOffsets.minuteOffset;
+      return timeValues.minutes + timeValues.minuteOffset;
     case TIME_UNITS.SECONDS:
-      return timeOffsets.secondOffset;
+      return timeValues.seconds + timeValues.secondOffset;
     default:
       return 0;
   }
