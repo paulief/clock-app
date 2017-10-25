@@ -14,9 +14,13 @@ class App extends Component {
         <header className="App-header">
           <h1>Clock App</h1>
         </header>
-        <TimeUnitContainer unitType="HOURS" />
-        <TimeUnitContainer unitType="MINUTES" />
-        <TimeUnitContainer unitType="SECONDS" />
+        <div className="App-time-container">
+          <TimeUnitContainer unitType="HOURS" />
+          <div className="App-time-divider">:</div>
+          <TimeUnitContainer unitType="MINUTES" />
+          <div className="App-time-divider">:</div>
+          <TimeUnitContainer unitType="SECONDS" />
+        </div>
       </div>
     );
   }

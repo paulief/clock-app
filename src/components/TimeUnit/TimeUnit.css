@@ -1,0 +1,24 @@
+.TimeUnit {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px 12px;
+}
+
+.TimeUnit-btn {
+  height: 24px;
+  width: 24px;
+  margin: 4px 0px;
+  border-radius: 24px;
+  background-color: #3185FC;
+  outline: 0;
+  border: 0;
+}
+
+.TimeUnit-btn:active {
+  background-color: #ADBDFF;
+}
+
+.TimeUnit-value {
+  font-size: 1.5em;
+}

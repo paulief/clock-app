@@ -42,14 +42,3 @@ export const startClock = () => (dispatch) => {
     dispatch(updateTime(timeValues));
   }, 1000);
 };
-
-// NOTE: Possible second approach
-
-// Action Types
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-
-export const incrementUnit = unit => ({
-  type: INCREMENT,
-  unit,
-});

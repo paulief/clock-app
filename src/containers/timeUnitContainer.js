@@ -7,11 +7,11 @@ import TimeUnit from '../components/TimeUnit';
 const getUnitValue = (timeValues, unitType) => {
   switch (unitType) {
     case TIME_UNITS.HOURS:
-      return timeValues.hours + timeValues.hourOffset;
+      return (timeValues.hours + timeValues.hourOffset) % 12;
     case TIME_UNITS.MINUTES:
-      return timeValues.minutes + timeValues.minuteOffset;
+      return (timeValues.minutes + timeValues.minuteOffset) % 60;
     case TIME_UNITS.SECONDS:
-      return timeValues.seconds + timeValues.secondOffset;
+      return (timeValues.seconds + timeValues.secondOffset) % 60;
     default:
       return 0;
   }
