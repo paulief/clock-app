@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import TimeUnitContainer from '../../containers/TimeUnitContainer';
+import loadingImage from './loadingImage.gif';
 
 class App extends Component {
   componentDidMount() {
     this.props.startClock();
+    this.props.getOffsets();
   }
 
   render() {
@@ -14,20 +16,30 @@ class App extends Component {
         <header className="App-header">
           <h1>Clock App</h1>
         </header>
-        <div className="App-time-container">
-          <TimeUnitContainer unitType="HOURS" />
-          <div className="App-time-divider">:</div>
-          <TimeUnitContainer unitType="MINUTES" />
-          <div className="App-time-divider">:</div>
-          <TimeUnitContainer unitType="SECONDS" />
-        </div>
+        { this.props.loading ? (
+          <div className="App-time-container">
+            <img className="App-loading" src={loadingImage} alt="Loading" />
+            <div>Loading...</div>
+          </div>
+        ) : (
+          <div className="App-time-container">
+            <TimeUnitContainer unitType="HOURS" />
+            <div className="App-time-divider">:</div>
+            <TimeUnitContainer unitType="MINUTES" />
+            <div className="App-time-divider">:</div>
+            <TimeUnitContainer unitType="SECONDS" />
+          </div>
+        )
+        }
       </div>
     );
   }
 }
 
 App.propTypes = {
+  loading: PropTypes.bool.isRequired,
   startClock: PropTypes.func.isRequired,
+  getOffsets: PropTypes.func.isRequired,
 };
 
 export default App;

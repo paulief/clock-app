@@ -7,12 +7,26 @@ const initialState = {
   hourOffset: 0,
   minuteOffset: 0,
   secondOffset: 0,
+  loading: false,
 };
 
 const timeReducer = (state = initialState, action) => {
   const { hourOffset, minuteOffset, secondOffset } = state;
 
   switch (action.type) {
+    case TIME_ACTIONS.FETCH_OFFSETS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case TIME_ACTIONS.FETCH_OFFSETS_SUCCESS:
+      return {
+        ...state,
+        ...action.offsets,
+        loading: false,
+      };
+
+
     case TIME_ACTIONS.UPDATE_TIME:
       return {
         ...state,

@@ -2,21 +2,35 @@ import { getTimeValues } from '../helpers/timeHelper';
 import Api from '../helpers/api';
 
 // Action Types
-
-const UPDATE_TIME = 'UPDATE_TIME';
-
-const UPDATE_OFFSET_HOURS = 'UPDATE_OFFSET_HOURS';
-const UPDATE_OFFSET_MINUTES = 'UPDATE_OFFSET_MINUTES';
-const UPDATE_OFFSET_SECONDS = 'UPDATE_OFFSET_SECONDS';
-
 export const TIME_ACTIONS = {
-  UPDATE_TIME,
-  UPDATE_OFFSET_HOURS,
-  UPDATE_OFFSET_MINUTES,
-  UPDATE_OFFSET_SECONDS,
+  UPDATE_TIME: 'UPDATE_TIME',
+  UPDATE_OFFSET_HOURS: 'UPDATE_OFFSET_HOURS',
+  UPDATE_OFFSET_MINUTES: 'UPDATE_OFFSET_MINUTES',
+  UPDATE_OFFSET_SECONDS: 'UPDATE_OFFSET_SECONDS',
+  FETCH_OFFSETS: 'FETCH_OFFSETS',
+  FETCH_OFFSETS_SUCCESS: 'FETCH_OFFSETS_SUCCESS',
 };
 
-// Action Creators
+/* Action Creators */
+
+// Offset actions
+
+const startFetchOffsets = () => ({
+  type: TIME_ACTIONS.FETCH_OFFSETS,
+});
+
+const gotOffsets = offsets => ({
+  type: TIME_ACTIONS.FETCH_OFFSETS_SUCCESS,
+  offsets,
+});
+
+export const fetchOffsets = () => (dispatch) => {
+  dispatch(startFetchOffsets());
+
+  Api.getOffsets()
+    .then(offsets => dispatch(gotOffsets(offsets)));
+};
+
 const updateOffset = (unitType, change) => ({
   type: `UPDATE_OFFSET_${unitType}`,
   change,
@@ -36,8 +50,10 @@ export const decrementAction = unitType => (dispatch) => {
     .catch(() => dispatch(updateOffset(unitType, 1)));
 };
 
+// Clock running actions
+
 const updateTime = timeValues => ({
-  type: UPDATE_TIME,
+  type: TIME_ACTIONS.UPDATE_TIME,
   timeValues,
 });
 

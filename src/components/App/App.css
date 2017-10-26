@@ -10,6 +10,11 @@
   color: white;
 }
 
+.App-loading {
+  height: 50px;
+  width: 50px;
+}
+
 .App-time-container {
   /*height: 160px;*/
   padding: 20px 0px;
