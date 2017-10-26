@@ -19,37 +19,22 @@ const timeReducer = (state = initialState, action) => {
         ...action.timeValues,
       };
 
-    case TIME_ACTIONS.INCREMENT_HOURS:
+    case TIME_ACTIONS.UPDATE_OFFSET_HOURS:
       return {
         ...state,
-        hourOffset: hourOffset + 1,
-      };
-    case TIME_ACTIONS.DECREMENT_HOURS:
-      return {
-        ...state,
-        hourOffset: hourOffset - 1,
+        hourOffset: hourOffset + action.change,
       };
 
-    case TIME_ACTIONS.INCREMENT_MINUTES:
+    case TIME_ACTIONS.UPDATE_OFFSET_MINUTES:
       return {
         ...state,
-        minuteOffset: minuteOffset + 1,
-      };
-    case TIME_ACTIONS.DECREMENT_MINUTES:
-      return {
-        ...state,
-        minuteOffset: minuteOffset - 1,
+        minuteOffset: minuteOffset + action.change,
       };
 
-    case TIME_ACTIONS.INCREMENT_SECONDS:
+    case TIME_ACTIONS.UPDATE_OFFSET_SECONDS:
       return {
         ...state,
-        secondOffset: secondOffset + 1,
-      };
-    case TIME_ACTIONS.DECREMENT_SECONDS:
-      return {
-        ...state,
-        secondOffset: secondOffset - 1,
+        secondOffset: secondOffset + action.change,
       };
 
     default:

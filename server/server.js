@@ -17,6 +17,7 @@ app.get(API_PATHS.GET_OFFSETS, (req, res) => {
 app.put(API_PATHS.UPDATE_OFFSET, (req, res) => {
   const { unitType, change } = req.body;
   const offsets = TimeData.updateOffset(unitType, change);
+  console.log(offsets);
   res.json(offsets);
 });
 

@@ -5,46 +5,36 @@ import Api from '../helpers/api';
 
 const UPDATE_TIME = 'UPDATE_TIME';
 
-const INCREMENT_SECONDS = 'INCREMENT_SECONDS';
-const INCREMENT_MINUTES = 'INCREMENT_MINUTES';
-const INCREMENT_HOURS = 'INCREMENT_HOURS';
-
-const DECREMENT_SECONDS = 'DECREMENT_SECONDS';
-const DECREMENT_MINUTES = 'DECREMENT_MINUTES';
-const DECREMENT_HOURS = 'DECREMENT_HOURS';
+const UPDATE_OFFSET_HOURS = 'UPDATE_OFFSET_HOURS';
+const UPDATE_OFFSET_MINUTES = 'UPDATE_OFFSET_MINUTES';
+const UPDATE_OFFSET_SECONDS = 'UPDATE_OFFSET_SECONDS';
 
 export const TIME_ACTIONS = {
-  INCREMENT_SECONDS,
-  INCREMENT_MINUTES,
-  INCREMENT_HOURS,
-  DECREMENT_SECONDS,
-  DECREMENT_MINUTES,
-  DECREMENT_HOURS,
   UPDATE_TIME,
+  UPDATE_OFFSET_HOURS,
+  UPDATE_OFFSET_MINUTES,
+  UPDATE_OFFSET_SECONDS,
 };
 
 // Action Creators
-const incrementLocal = unitType => ({
-  type: `INCREMENT_${unitType}`,
-});
-
-const decrementLocal = unitType => ({
-  type: `DECREMENT_${unitType}`,
+const updateOffset = (unitType, change) => ({
+  type: `UPDATE_OFFSET_${unitType}`,
+  change,
 });
 
 export const incrementAction = unitType => (dispatch) => {
-  dispatch(incrementLocal(unitType))
+  dispatch(updateOffset(unitType, 1));
 
   Api.updateOffset(unitType, 1)
-    .catch(() => dispatch(decrementLocal(unitType)));
-}
+    .catch(() => dispatch(updateOffset(unitType, -1)));
+};
 
 export const decrementAction = unitType => (dispatch) => {
-  dispatch(decrementLocal(unitType))
+  dispatch(updateOffset(unitType, -1));
 
   Api.updateOffset(unitType, -1)
-    .catch(() => dispatch(incrementLocal(unitType)));
-}
+    .catch(() => dispatch(updateOffset(unitType, 1)));
+};
 
 const updateTime = timeValues => ({
   type: UPDATE_TIME,
