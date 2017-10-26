@@ -1,4 +1,5 @@
 import { getTimeValues } from '../helpers/timeHelper';
+import Api from '../helpers/api';
 
 // Action Types
 
@@ -23,13 +24,27 @@ export const TIME_ACTIONS = {
 };
 
 // Action Creators
-export const incrementAction = unitType => ({
+const incrementLocal = unitType => ({
   type: `INCREMENT_${unitType}`,
 });
 
-export const decrementAction = unitType => ({
+const decrementLocal = unitType => ({
   type: `DECREMENT_${unitType}`,
 });
+
+export const incrementAction = unitType => (dispatch) => {
+  dispatch(incrementLocal(unitType))
+
+  Api.updateOffset(unitType, 1)
+    .catch(() => dispatch(decrementLocal(unitType)));
+}
+
+export const decrementAction = unitType => (dispatch) => {
+  dispatch(decrementLocal(unitType))
+
+  Api.updateOffset(unitType, -1)
+    .catch(() => dispatch(incrementLocal(unitType)));
+}
 
 const updateTime = timeValues => ({
   type: UPDATE_TIME,
