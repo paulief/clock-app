@@ -23,11 +23,11 @@ class App extends Component {
           </div>
         ) : (
           <div className="App-time-container">
-            <TimeUnitContainer unitType="HOURS" />
+            <TimeUnitContainer unitType="HOURS" className="App-time-primary" />
             <div className="App-time-divider">:</div>
-            <TimeUnitContainer unitType="MINUTES" />
+            <TimeUnitContainer unitType="MINUTES" className="App-time-secondary" />
             <div className="App-time-divider">:</div>
-            <TimeUnitContainer unitType="SECONDS" />
+            <TimeUnitContainer unitType="SECONDS" className="App-time-tertiary" />
           </div>
         )
         }

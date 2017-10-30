@@ -4,10 +4,8 @@
 }
 
 .App-header {
-  background-color: #B74F6F;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  padding: 16px;
+  color: #023d48;
 }
 
 .App-loading {
@@ -15,11 +13,34 @@
   width: 50px;
 }
 
+.App-time-primary {
+  color: #035d6e;
+}
+.App-time-primary .TimeUnit-btn {
+  background-color: #035d6e;
+}
+
+.App-time-secondary {
+  color: #048ea8;
+}
+.App-time-secondary .TimeUnit-btn {
+  background-color: #048ea8;
+}
+
+.App-time-tertiary {
+  color: #05aece;
+}
+.App-time-tertiary .TimeUnit-btn {
+  background-color: #05aece;
+}
+
 .App-time-container {
-  /*height: 160px;*/
-  padding: 20px 0px;
+  padding: 24px 0px;
 }
 
 .App-time-divider {
   display: inline-block;
+  vertical-align: middle;
+  font-size: 1.8em;
+  color: #023d48;
 }
